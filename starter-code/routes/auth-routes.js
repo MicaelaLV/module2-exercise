@@ -40,7 +40,7 @@ authRoutes.post("/signup", (req, res, next) => {
   });
 //redirect to index if there's an error in the fillup of a new customer
  newCustomer.save((err) => {
-    res.redirect("/");
+    res.redirect("/search");
   });
 });
 
@@ -70,7 +70,7 @@ authRoutes.post("/login", (req, res, next) => {
       if (bcrypt.compareSync(password, customer.password)) {
         // Save the login in the session!
         req.session.currentCustomer = customer;
-        res.redirect("/");
+        res.redirect("/search");
       } else {
         res.render("auth/login", {
           errorMessage: "Incorrect password"

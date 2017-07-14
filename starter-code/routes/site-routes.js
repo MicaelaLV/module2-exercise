@@ -20,14 +20,4 @@ siteRoutes.use((req, res, next) => {
     }
 });
 
-
-siteRoutes.get("/private", (req, res, next) => {
-    res.render('private');
-});
-
-siteRoutes.get("/main", (req, res, next) => {
-    res.render('main');
-});
-
-
 module.exports = siteRoutes;
