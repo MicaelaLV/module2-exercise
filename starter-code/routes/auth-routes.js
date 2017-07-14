@@ -1,6 +1,6 @@
 const express = require('express');
 const authRoutes = express.Router();
-const User = require("../models/user");
+const Customer = require("../models/customer");
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
@@ -15,7 +15,7 @@ authRoutes.post("/signup", (req, res, next) => {
   const salt     = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
 
-  const newUser  = User({
+  const newCustomer  = Customer({
     username,
     password: hashPass
   });
@@ -24,21 +24,21 @@ authRoutes.post("/signup", (req, res, next) => {
     res.render("auth/signup", {
         errorMessage : "Indicate a username and password to sign up"
     })
-    return;
+    res.end();
   };
-//validate if username already exists
-  User.findOne({ "username": username }, //search condition
+//validate if customer already exists
+  Customer.findOne({ "username": username }, //search condition
   "username", //projection!
-  (err, user) => {
-    if (user !== null) {
+  (err, customer) => {
+    if (customer !== null) {
       res.render("auth/signup", {
         errorMessage: "The username already exists"
       });
-      return;
+      res.end();
     }
   });
 
- newUser.save((err) => {
+ newCustomer.save((err) => {
     res.redirect("/");
   });
 });
@@ -56,24 +56,25 @@ authRoutes.post("/login", (req, res, next) => {
     res.render("auth/login", {
       errorMessage: "Indicate a username and a password to sign up"
     });
-    return;
+    res.end();
   }
 
- User.findOne({ "username": username }, (err, user) => {
-      if (err || !user) {
+ Customer.findOne({ "username": username }, (err, customer) => {
+      if (err || !customer) {
         res.render("auth/login", {
           errorMessage: "This username doesn't exist"
         });
-        return;
+        res.end();
       }
-      if (bcrypt.compareSync(password, user.password)) {
+      if (bcrypt.compareSync(password, customer.password)) {
         // Save the login in the session!
-        req.session.currentUser = user;
+        req.session.currentCustomer = customer;
         res.redirect("/");
       } else {
         res.render("auth/login", {
           errorMessage: "Incorrect password"
         });
+        res.end();
       }
   });
 });

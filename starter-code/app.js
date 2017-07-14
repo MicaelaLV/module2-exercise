@@ -11,14 +11,14 @@ const authRoutes     = require('./routes/auth-routes');
 const siteRoutes     = require('./routes/site-routes');
 
 const session        = require("express-session");
-const userData       = require('connect-mongo') (session);
+const customerData       = require('connect-mongo') (session);
 
 
 
 // Controllers
 
 // Mongoose configuration
-mongoose.connect("mongodb://localhost/basic-auth");
+mongoose.connect("mongodb://localhost/foodApp");
 
 // Middlewares configuration
 app.use(logger("dev"));
@@ -26,7 +26,7 @@ app.use(logger("dev"));
 app.use(session ({
   secret: "basic-auth-secret",
   cookie: { maxAge: 30000 },
-  store: new userData({
+  store: new customerData({
     mongooseConnection: mongoose.connection,
   ttl: 24 * 60 * 60
   })

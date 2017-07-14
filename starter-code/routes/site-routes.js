@@ -7,7 +7,7 @@ siteRoutes.get("/", (req, res, next) => {
 
 
 siteRoutes.use((req, res, next) => {
-    if(req.session.currentUser) {
+    if(req.session.currentCustomer) {
         next();
     } else {
         res.redirect("/login");
