@@ -1,0 +1,82 @@
+/*
+Name: Food App
+Description: Index Landing Page Styling
+Authors: Micaela Linda Villani & Stephanos Theodotou & Matilde Adan Ramirez
+Authors URI:
+Tags: 
+*/
+
+/* Fonts Used 
+font-family: 'Nunito', sans-serif;
+font-family: 'Work Sans', sans-serif;
+*/
+
+html, body { 
+    padding: 0;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden;
+}
+
+*:before *:after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4A90E2;
+    height: 100vh;
+    width: 100vw;
+}
+
+.nav-bar {
+    height: 50px;
+    margin-top: 0 auto;
+}
+
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    width: 300px;
+    height: 100px;
+    color: white;
+    margin-right: 40px;
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+button {
+    border: 2px solid white;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    height: 60px;
+    margin-left: 80%;
+    margin-top: 50px;
+    width: 140px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    border: 2px solid #98D55A;
+}
+
+a:hover {
+    color: #98D55A;
+    text-decoration: underline #98D55A;
+}
+
+
+.first-section {
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 30px;
+    margin-top: 150px;
+}
+
+.cloud {
+    margin-left: 55%;
+}
