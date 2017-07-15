@@ -10,29 +10,22 @@
 
 <body>
   <form id="form" action="/signup" method="POST">
-      <h2>Signup</h2>
+      
+    <h2>Signup</h2>
     <label for="username">Username</label><br>
-    <input type="text" name="username"
-      placeholder="JonSnow">
-
+    <input type="text" name="username" placeholder="JonSnow">
    <br><br>
     <label for="password">Password</label><br>
-    <input type="password" name="password"
-      placeholder="winteriscoming">
+    <input type="password" name="password" placeholder="winteriscoming">
     <br><br>
-
- <% if (typeof(errorMessage) != "undefined") { %>
-     <div class="error-message"><%= errorMessage %></div>
- <% } %>
-
-
-
-   <button>Create account</button>
-
+    <% if (typeof(errorMessage) != "undefined") { %>
+        <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+    <button>Create account</button>
 
     <p class="account-message">
         Already have an account? <a href="/login">Log in</a>
-
+    </p>
   </form>
 </body>
 </html>
