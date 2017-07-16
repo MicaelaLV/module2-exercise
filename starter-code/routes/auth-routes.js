@@ -1,11 +1,11 @@
-const express = require('express');
-const authRoutes = express.Router();
-const Customer = require("../models/customer");
-const bcrypt = require('bcrypt');
-const bcryptSalt = 10;
+const express     = require('express');
+const authRoutes  = express.Router();
+const Customer    = require("../models/customer");
+const bcrypt      = require('bcrypt');
+const bcryptSalt  = 10;
 
 
-// ---------------------------------------------------SIGN UP
+// --------------------------------------------------- Customer's SIGN UP
 authRoutes.get("/signup", (req, res, next) => {
     res.render("auth/signup");
 });
@@ -43,7 +43,7 @@ authRoutes.post("/signup", (req, res, next) => {
     })
  });
 
-//-----------------------------------------------------LOGIN
+//----------------------------------------------------- Customer's LOGIN
 authRoutes.get("/login", (req, res, next) => {
     res.render("auth/login");
 });
@@ -76,6 +76,23 @@ authRoutes.post("/login", (req, res, next) => {
       }
   });
 });
+
+authRoutes.get("/logout", (req, res, next) => {
+  req.session.destroy((err) => {
+    // cannot access session here
+    res.redirect("/login");
+  });
+});
+
+//----------------------------------------------------- Customer's LOGOUT
+authRoutes.get('/search', (req, res, next) => {
+  res.render('search', {
+    name: "FoodApp",
+    postalcode: ["80080", "80109", "80817"],
+    cuisine: ["italian", "greek", "chinese", "french", "sushi"]
+  });
+ });
+
 
 
 module.exports = authRoutes;
